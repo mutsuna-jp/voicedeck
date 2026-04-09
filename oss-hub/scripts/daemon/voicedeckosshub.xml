@@ -1,0 +1,32 @@
+<service>
+	<id>voicedeckosshub.exe</id>
+	<name>VoiceDeck-OSS-Hub</name>
+	<description>Mutsuna Voice Deck Hub (OSS version)</description>
+	<executable>C:\Users\taich.000\AppData\Local\Volta\tools\image\node\24.12.0\node.exe</executable>
+	<argument>--harmony</argument>
+	<argument>E:\MutsunaJP\alexa2streamdeck\node_modules\.pnpm\node-windows@1.0.0-beta.8\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>E:\MutsunaJP\alexa2streamdeck\public\oss-hub\scripts\run-server.js</argument>
+	<argument>--scriptoptions=</argument>
+	<argument>--log</argument>
+	<argument>VoiceDeck-OSS-Hub wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>1</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>undefined</argument>
+	<logmode>rotate</logmode>
+	<stoptimeout>30sec</stoptimeout>
+	<env name="NODE_ENV" value="production"/>
+	<serviceaccount>
+		<domain>DESKTOP-0KUCDNV</domain>
+		<user>LocalSystem</user>
+		<password></password>
+	</serviceaccount>
+	<workingdirectory>E:\MutsunaJP\alexa2streamdeck\public\oss-hub</workingdirectory>
+</service>

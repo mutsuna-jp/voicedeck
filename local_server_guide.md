@@ -32,26 +32,25 @@
     - トークンを空にすると、プラグインは自動的に `http://localhost:8787` を参照します。
 3.  「Check Status」を押し、Hub が `🟢 Connected` に、Tier が `PREMIUM` になれば成功です。
 
-## 3. Alexa スキルとの連携 (AWS Lambda 経由)
+## 3. Alexa スキルとの連携 (Alexa-hosted 経由)
 
-Alexa からのリクエストをローカル PC に届けるために、AWS Lambda をブリッジとして使用します。
+Alexa からのリクエストをローカル PC に届けるために、Amazon のサーバーを中継役として使用します。
 
 ### ステップ 1: ngrok 等でローカルサーバーを公開
-Alexa (Lambda) からアクセスできるようにします。
+Alexa からアクセスできるようにします。
 ```bash
 ngrok http 8787
 ```
 発行された URL（例: `https://xxxx.ngrok-free.app`）を控えておきます。
 
-### ステップ 2: AWS Lambda の作成
-1.  [AWS コンソール](https://console.aws.amazon.com/lambda/)で新しい関数を作成します（Node.js 20.x）。
-2.  `public/lambda_bridge.js` の内容を Lambda に貼り付けます。
-3.  環境変数 `HUB_ALEXA_ENDPOINT` に、ステップ 1 で控えた URL + `/alexa` を設定します。
-    - 例: `https://xxxx.ngrok-free.app/alexa`
+### ステップ 2: Alexa スキルの作成とコードの設定
+Alexa Developer Console 内だけで完結する手順を以下のガイドにまとめています。
+- [Alexa スキルの作成・設定ガイド (全手順)](file:///e:/MutsunaJP/alexa2streamdeck/public/alexa_skill_setup.md)
 
-### ステップ 3: Alexa スキルの設定
-1.  [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) で対象スキルの「Endpoint」設定を開きます。
-2.  「AWS Lambda ARN」を選択し、作成した Lambda の ARN を入力して保存します。
+このガイドに従って：
+1. **Alexa-hosted (Node.js)** を選択してスキルを作成。
+2. `public/alexa_hosted_index.js` のコードを貼り付け。
+3. 環境変数 `HUB_ALEXA_ENDPOINT` に、ステップ 1 で控えた URL + `/alexa` を設定。
 
 ---
-これで、あなたの声が Alexa → AWS Lambda → あなたの PC (oss-hub) → ストリームデックへと届くようになります！
+これで、あなたの声が Alexa → Amazon サーバー → あなたの PC (oss-hub) → ストリームデック（プラグイン）へと届くようになります！
