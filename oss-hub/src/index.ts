@@ -122,7 +122,7 @@ app.post("/api/ai/match-action", async (c) => {
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: modelName || "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: modelName || "gemini-3.1-flash-lite-preview" });
     const prompt = `ユーザーの言葉 "${userInput}" に最も近い ID を以下から選び、IDのみ回答してください: ${JSON.stringify(actions)}`;
     const result = await model.generateContent(prompt);
     const text = result.response.text().trim();
