@@ -48,7 +48,11 @@ async function main() {
   });
 
   svc.on('uninstall', () => {
-    console.log('Service uninstalled successfully.');
+    console.log('VoiceDeck-OSS-Hub service uninstalled successfully.');
+  });
+
+  svc.on('stop', () => {
+    console.log('VoiceDeck-OSS-Hub service stopped.');
   });
 
   svc.on('start', () => {
